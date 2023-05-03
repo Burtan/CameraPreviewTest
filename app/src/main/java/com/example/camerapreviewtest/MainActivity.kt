@@ -2,7 +2,6 @@ package com.example.camerapreviewtest
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -73,40 +72,6 @@ class MainActivity : ComponentActivity() {
                 _permissionState.value = _permissionState.value.plus(Manifest.permission.CAMERA to false)
             }
             else -> permissionsToRequest.add(Manifest.permission.CAMERA)
-        }
-        if (Build.VERSION.SDK_INT <= 28) {
-            when {
-                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED -> {
-                    _permissionState.value = _permissionState.value.plus(Manifest.permission.WRITE_EXTERNAL_STORAGE to true)
-                }
-
-                ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) -> {
-                    // the user declined the request and needs more information on why to
-                    // grant it
-                    _permissionState.value = _permissionState.value.plus(Manifest.permission.WRITE_EXTERNAL_STORAGE to false)
-                }
-
-                else -> permissionsToRequest.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            }
-        }
-        if (Build.VERSION.SDK_INT >= 33) {
-            when {
-                checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED -> {
-                    _permissionState.value = _permissionState.value.plus(Manifest.permission.POST_NOTIFICATIONS to true)
-                }
-
-                ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) -> {
-                    // the user declined the request and needs more information on why to
-                    // grant it
-                    _permissionState.value = _permissionState.value.plus(Manifest.permission.POST_NOTIFICATIONS to false)
-                }
-
-                else -> permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
-            }
         }
         requestPermissionLauncher.launch(permissionsToRequest.toTypedArray())
     }

@@ -2,7 +2,7 @@
 decompose = "1.0.0"
 agp = "8.0.0"
 coroutines = "1.6.4"
-ktor = "2.3.0"
+ktor = "2.3.13"
 sqldelight = "2.0.0-SNAPSHOT"
 kx-datetime = "0.4.0"
 uuid = "0.7.0"

@@ -42,7 +42,7 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3.window.sizes)
-    implementation("androidx.compose.material3:material3:1.1.0-rc01")
+    implementation("androidx.compose.material3:material3:1.4.0")
     //implementation(libs.androidx.compose.material3) TODO wait for 1.1.0 to be part of bom
     debugImplementation(libs.androidx.compose.ui.tooling)
 
